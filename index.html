@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIRESA — Cliente RSI</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1220;
+    color: white;
+}
+
+.header {
+    background: #111c2e;
+    padding: 22px 18px;
+    text-align: center;
+    border-bottom: 2px solid #263b59;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.header p {
+    margin: 6px 0 0;
+    color: #9fb3c8;
+}
+
+.container {
+    padding: 18px;
+}
+
+.card {
+    background: #152238;
+    border-radius: 15px;
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+    border-radius: 10px;
+    background: #102d23;
+    margin-top: 10px;
+}
+
+.ok {
+    color: #45e08a;
+    font-weight: bold;
+}
+
+.sensor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.value {
+    background: #0d1727;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.value span {
+    display: block;
+    color: #9fb3c8;
+    font-size: 14px;
+}
+
+.value strong {
+    display: block;
+    font-size: 22px;
+    margin-top: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #1877f2;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    color: #71849a;
+    font-size: 13px;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>SIRESA</h1>
+    <p>Cliente RSI</p>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Estado del sistema</h2>
+
+        <div class="status">
+            <span>Sistema de refrigeración</span>
+            <span class="ok">● NORMAL</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Monitoreo</h2>
+
+        <div class="sensor">
+
+            <div class="value">
+                <span>Temperatura</span>
+                <strong id="temp">-5.0 °C</strong>
+            </div>
+
+            <div class="value">
+                <span>Presión</span>
+                <strong id="pressure">2.4 bar</strong>
+            </div>
+
+            <div class="value">
+                <span>Compresor</span>
+                <strong id="compressor">ENCENDIDO</strong>
+            </div>
+
+            <div class="value">
+                <span>Evaporador</span>
+                <strong id="evaporator">NORMAL</strong>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Control</h2>
+
+        <button onclick="actualizarSistema()">
+            ACTUALIZAR SISTEMA
+        </button>
+    </div>
+
+</div>
+
+<div class="footer">
+    SIRESA — Cliente RSI<br>
+    Sistema de monitoreo de refrigeración
+</div>
+
+<script>
+
+function actualizarSistema() {
+
+    let temp = (Math.random() * 4 - 7).toFixed(1);
+    let pressure = (Math.random() * 0.6 + 2.1).toFixed(1);
+
+    document.getElementById("temp").innerText =
+        temp + " °C";
+
+    document.getElementById("pressure").innerText =
+        pressure + " bar";
+
+    document.getElementById("compressor").innerText =
+        "ENCENDIDO";
+
+    document.getElementById("evaporator").innerText =
+        "NORMAL";
+}
+
+</script>
+
+</body>
+</html>
